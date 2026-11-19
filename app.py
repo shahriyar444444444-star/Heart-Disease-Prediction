@@ -62,11 +62,15 @@ html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, div, span, button, label,
 }
 .stTabs [data-baseweb="tab"] {
     background-color: rgba(255, 255, 255, 0.08); 
-    border-radius: 10px; 
-    padding: 8px 20px;
+    border-radius: 25px; /* বক্সটিকে গোলাকার (Rounded Square) করার জন্য */
+    padding: 10px 24px; /* প্যাডিং অ্যাডজাস্ট করা হয়েছে */
     color: #b0b0b0;
     border: 1px solid transparent;
-    font-size: 1.1rem; /* Times New Roman একটু ছোট দেখায় তাই সাইজ একটু বাড়ানো হলো */
+    font-size: 1.1rem;
+    display: flex; 
+    justify-content: center; /* লেখাকে ঠিক মাঝখানে আনার জন্য */
+    align-items: center; /* লেখা ও আইকন ঠিক উচ্চতায় রাখার জন্য */
+    transition: all 0.3s ease;
 }
 .stTabs [aria-selected="true"] {
     background-color: rgba(255, 75, 75, 0.15) !important;
