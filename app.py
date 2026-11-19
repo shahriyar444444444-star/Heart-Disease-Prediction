@@ -7,7 +7,7 @@ import joblib
 # ------------------------------------------------------------------
 st.set_page_config(
     page_title="Heart Disease Predictor",
-    page_icon="",
+    page_icon="❤️",
     layout="wide",
     initial_sidebar_state="collapsed",
 )
@@ -17,10 +17,9 @@ st.set_page_config(
 # ------------------------------------------------------------------
 st.markdown("""
 <style>
-/* Times New Roman Font Applied Globally */
-html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, div, span, button, label, table, th, td { 
-    font-family: 'Times New Roman', Times, serif !important; 
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 
 /* Dark Gradient Background */
 .stApp { 
@@ -62,15 +61,10 @@ html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, div, span, button, label,
 }
 .stTabs [data-baseweb="tab"] {
     background-color: rgba(255, 255, 255, 0.08); 
-    border-radius: 25px; /* বক্সটিকে গোলাকার (Rounded Square) করার জন্য */
-    padding: 10px 24px; /* প্যাডিং অ্যাডজাস্ট করা হয়েছে */
+    border-radius: 10px; 
+    padding: 8px 20px;
     color: #b0b0b0;
     border: 1px solid transparent;
-    font-size: 1.1rem;
-    display: flex; 
-    justify-content: center; /* লেখাকে ঠিক মাঝখানে আনার জন্য */
-    align-items: center; /* লেখা ও আইকন ঠিক উচ্চতায় রাখার জন্য */
-    transition: all 0.3s ease;
 }
 .stTabs [aria-selected="true"] {
     background-color: rgba(255, 75, 75, 0.15) !important;
@@ -82,7 +76,7 @@ html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, div, span, button, label,
 .stButton>button {
     background: linear-gradient(90deg, #ff4b4b 0%, #f09819 100%);
     color: white; border: none; padding: 0.85rem 2rem;
-    font-size: 1.3rem; border-radius: 12px; font-weight: 700;
+    font-size: 1.2rem; border-radius: 12px; font-weight: 700;
     width: 100%; transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(240, 152, 25, 0.4);
 }
@@ -139,7 +133,7 @@ except Exception as e:
 # ------------------------------------------------------------------
 st.markdown("""
 <div class='main-header'>
-    <h1>Heart Disease Prediction by Farhan Shahriyar</h1>
+    <h1>❤️ Heart Disease Prediction ❤️ by Farhan Shahriyar</h1>
     <p>Fill in the patient details below and click <b>Predict</b> to estimate heart disease risk.</p>
 </div>
 """, unsafe_allow_html=True)
