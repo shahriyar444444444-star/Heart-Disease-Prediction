@@ -133,7 +133,7 @@ except Exception as e:
 # ------------------------------------------------------------------
 st.markdown("""
 <div class='main-header'>
-    <h1>❤️ Heart Disease Prediction ❤️ by Farhan Shahriyar</h1>
+    <h1>Heart Disease Prediction by Farhan Shahriyar</h1>
     <p>Fill in the patient details below and click <b>Predict</b> to estimate heart disease risk.</p>
 </div>
 """, unsafe_allow_html=True)
