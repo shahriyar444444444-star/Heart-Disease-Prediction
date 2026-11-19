@@ -17,9 +17,10 @@ st.set_page_config(
 # ------------------------------------------------------------------
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-
-html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
+/* Times New Roman Font Applied Globally */
+html, body, [class*="css"], h1, h2, h3, h4, h5, h6, p, div, span, button, label, table, th, td { 
+    font-family: 'Times New Roman', Times, serif !important; 
+}
 
 /* Dark Gradient Background */
 .stApp { 
@@ -65,6 +66,7 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
     padding: 8px 20px;
     color: #b0b0b0;
     border: 1px solid transparent;
+    font-size: 1.1rem; /* Times New Roman একটু ছোট দেখায় তাই সাইজ একটু বাড়ানো হলো */
 }
 .stTabs [aria-selected="true"] {
     background-color: rgba(255, 75, 75, 0.15) !important;
@@ -76,7 +78,7 @@ html, body, [class*="css"] { font-family: 'Poppins', sans-serif; }
 .stButton>button {
     background: linear-gradient(90deg, #ff4b4b 0%, #f09819 100%);
     color: white; border: none; padding: 0.85rem 2rem;
-    font-size: 1.2rem; border-radius: 12px; font-weight: 700;
+    font-size: 1.3rem; border-radius: 12px; font-weight: 700;
     width: 100%; transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(240, 152, 25, 0.4);
 }
