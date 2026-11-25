@@ -662,10 +662,10 @@ if submitted:
     # ---- Probabilities ----
     with right:
         st.markdown("#### 📊 Probability Breakdown")
-        st.progress(float(proba[0]), text=f"✅ No Disease — {proba[0]*100:.1f}%")
-        st.progress(float(proba[1]), text=f"⚠️ Disease — {proba[1]*100:.1f}%")
+        st.progress(float(proba[0]), text=f"No Disease — {proba[0]*100:.1f}%")
+        st.progress(float(proba[1]), text=f"Disease — {proba[1]*100:.1f}%")
 
-        st.markdown("#### 🧠 Model Info")
+        st.markdown("#### Model Info")
         st.info(
             f"**Algorithm:** K-Nearest Neighbors (k = {model.n_neighbors})\n\n"
             f"**Features used:** {len(columns)}"
