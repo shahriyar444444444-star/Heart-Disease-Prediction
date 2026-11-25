@@ -1,6 +1,7 @@
 
 
 
+
 # import streamlit as st
 # import pandas as pd
 # import joblib
@@ -72,20 +73,36 @@
 # [data-testid="stForm"] h3 { color:#0b4f5c; border-bottom:2px dashed #cfe3e8; padding-bottom:.6rem; margin-bottom:1rem; }
 # label, [data-testid="stWidgetLabel"] p { color:#12333d !important; font-weight:600; font-size:1.05rem; }
 
-# /* ---------- Tabs ---------- */
-# [role="tablist"] { gap:12px !important; background:transparent !important; padding:6px 4px 14px !important; border:none !important; box-shadow:none !important; overflow:visible !important; }
+# /* ---------- Tabs (Fixed for Mobile) ---------- */
+# [role="tablist"] { 
+#     gap: 10px !important; 
+#     background: transparent !important; 
+#     padding: 6px 4px 14px !important; 
+#     border: none !important; 
+#     box-shadow: none !important; 
+#     overflow-x: auto !important; /* মোবাইলে বক্সের বাইরে যাওয়া বন্ধ করবে */
+#     flex-wrap: wrap !important; /* জায়গা না হলে নিচে নেমে আসবে */
+#     scrollbar-width: none; 
+# }
+# [role="tablist"]::-webkit-scrollbar { display: none; }
 # [role="tablist"] > *:not([role="tab"]):not(:has([role="tab"])) { display:none !important; }
 # [role="tablist"]::before, [role="tablist"]::after, [data-baseweb="tab-highlight"], [data-baseweb="tab-border"] { display:none !important; }
+
 # button[role="tab"] {
 #     background:#eef6f8 !important; border:1px solid #cfe3e8 !important; border-radius:999px !important;
-#     height:auto !important; min-height:0 !important; margin:0 !important; padding:.7rem 2rem !important;
+#     height:auto !important; min-height:0 !important; margin:0 !important; padding:.6rem 1.2rem !important; /* প্যাডিং কমানো হয়েছে */
 #     display:flex !important; align-items:center !important; justify-content:center !important;
 #     box-shadow:none !important; outline:none !important;
 #     transition:background .55s cubic-bezier(.4,0,.2,1), border-color .55s ease, box-shadow .55s ease,
 #                transform .55s cubic-bezier(.34,1.56,.64,1) !important;
 # }
 # button[role="tab"]::before, button[role="tab"]::after { display:none !important; }
-# button[role="tab"] p { margin:0 !important; line-height:1.2 !important; font-size:1.08rem !important; white-space:nowrap; color:#3d6470; transition:color .55s ease; }
+# button[role="tab"] p { 
+#     margin:0 !important; line-height:1.2 !important; font-size:1.05rem !important; 
+#     white-space: normal !important; /* লেখা কাটা বন্ধ করবে */
+#     text-align: center !important;
+#     color:#3d6470; transition:color .55s ease; 
+# }
 # button[role="tab"]:hover { background:#dff0f3 !important; transform:translateY(-2px); }
 # button[role="tab"][aria-selected="true"] { background:#0e7c86 !important; border-color:#0e7c86 !important; box-shadow:0 6px 16px rgba(14,124,134,.35) !important; transform:translateY(-1px); }
 # button[role="tab"][aria-selected="true"] * { color:#ffffff !important; }
@@ -138,6 +155,16 @@
 # [data-testid="stAlert"] *, [data-testid="stAlert"] p { color:#ffffff !important; }
 # .stButton>button *, [data-testid="stFormSubmitButton"]>button *, [data-testid="stFormSubmitButton"] button p { color:#ffffff !important; }
 # .hosp-footer { text-align:center; color:#6b8790; margin-top:2rem; font-size:.95rem; letter-spacing:.04em; }
+
+# /* ---------- Mobile Responsiveness ---------- */
+# @media (max-width: 768px) {
+#     .block-container { padding-left: 1rem !important; padding-right: 1rem !important; }
+#     [data-testid="stForm"] { padding: 1rem 1.2rem !important; }
+#     .brand h1 { font-size: 1.6rem !important; }
+#     .brand p { font-size: 0.95rem !important; }
+#     button[role="tab"] { padding: .5rem 1rem !important; }
+#     button[role="tab"] p { font-size: 0.95rem !important; }
+# }
 # </style>
 # """, unsafe_allow_html=True)
 
@@ -364,8 +391,6 @@
 
 
 
-
-
 import streamlit as st
 import pandas as pd
 import joblib
@@ -437,33 +462,37 @@ h1,h2,h3,h4,h5,h6,p,label { color:#12333d; }
 [data-testid="stForm"] h3 { color:#0b4f5c; border-bottom:2px dashed #cfe3e8; padding-bottom:.6rem; margin-bottom:1rem; }
 label, [data-testid="stWidgetLabel"] p { color:#12333d !important; font-weight:600; font-size:1.05rem; }
 
-/* ---------- Tabs (Fixed for Mobile) ---------- */
+/* ---------- Tabs (Side-by-side scrollable on Mobile) ---------- */
 [role="tablist"] { 
     gap: 10px !important; 
     background: transparent !important; 
     padding: 6px 4px 14px !important; 
     border: none !important; 
     box-shadow: none !important; 
-    overflow-x: auto !important; /* মোবাইলে বক্সের বাইরে যাওয়া বন্ধ করবে */
-    flex-wrap: wrap !important; /* জায়গা না হলে নিচে নেমে আসবে */
-    scrollbar-width: none; 
+    overflow-x: auto !important; /* ডানে-বামে স্ক্রল করার জন্য */
+    flex-wrap: nowrap !important; /* এক লাইনে থাকার জন্য (নিচে নামবে না) */
+    scrollbar-width: none; /* স্ক্রলবার লুকানোর জন্য (Firefox) */
+    -ms-overflow-style: none; /* স্ক্রলবার লুকানোর জন্য (IE/Edge) */
 }
-[role="tablist"]::-webkit-scrollbar { display: none; }
+[role="tablist"]::-webkit-scrollbar { 
+    display: none; /* স্ক্রলবার লুকানোর জন্য (Chrome/Safari) */
+}
 [role="tablist"] > *:not([role="tab"]):not(:has([role="tab"])) { display:none !important; }
 [role="tablist"]::before, [role="tablist"]::after, [data-baseweb="tab-highlight"], [data-baseweb="tab-border"] { display:none !important; }
 
 button[role="tab"] {
     background:#eef6f8 !important; border:1px solid #cfe3e8 !important; border-radius:999px !important;
-    height:auto !important; min-height:0 !important; margin:0 !important; padding:.6rem 1.2rem !important; /* প্যাডিং কমানো হয়েছে */
+    height:auto !important; min-height:0 !important; margin:0 !important; padding:.6rem 1.2rem !important;
     display:flex !important; align-items:center !important; justify-content:center !important;
     box-shadow:none !important; outline:none !important;
+    flex-shrink: 0 !important; /* ট্যাবগুলো যাতে চেপে ছোট না হয়ে যায় */
     transition:background .55s cubic-bezier(.4,0,.2,1), border-color .55s ease, box-shadow .55s ease,
                transform .55s cubic-bezier(.34,1.56,.64,1) !important;
 }
 button[role="tab"]::before, button[role="tab"]::after { display:none !important; }
 button[role="tab"] p { 
     margin:0 !important; line-height:1.2 !important; font-size:1.05rem !important; 
-    white-space: normal !important; /* লেখা কাটা বন্ধ করবে */
+    white-space: nowrap !important; /* লেখা এক লাইনে রাখার জন্য */
     text-align: center !important;
     color:#3d6470; transition:color .55s ease; 
 }
@@ -526,7 +555,9 @@ div[data-testid="stExpander"] { background:#fff; border:1px solid #cfe3e8; borde
     [data-testid="stForm"] { padding: 1rem 1.2rem !important; }
     .brand h1 { font-size: 1.6rem !important; }
     .brand p { font-size: 0.95rem !important; }
-    button[role="tab"] { padding: .5rem 1rem !important; }
+    
+    /* মোবাইলে ট্যাবের প্যাডিং এবং ফন্ট একটু ছোট করা হলো যাতে সুন্দর ফিট হয় */
+    button[role="tab"] { padding: .5rem 0.9rem !important; }
     button[role="tab"] p { font-size: 0.95rem !important; }
 }
 </style>
@@ -740,3 +771,6 @@ else:
 
 st.markdown("<div class='hosp-footer'>✚ Cardiology AI Diagnostic Unit · Developed by Farhan Shahriyar</div>",
             unsafe_allow_html=True)
+
+
+
